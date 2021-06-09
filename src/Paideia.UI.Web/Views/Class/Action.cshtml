@@ -1,0 +1,47 @@
+﻿@model Paideia.Application.ClassViewModel
+<h1>@ViewBag.Action Turma</h1>
+<form asp-action="Action" id="target">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label class="control-label">Treinamento</label>
+            <br />
+            <select class="form-control" id="SelectTreinamento" asp-for="TrainingId" required>                
+                @foreach (var item in ViewBag.Treinamentos)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Class" class="control-label">Nome Modulo</label>
+            <input asp-for="Class" class="form-control" required/>
+            <span asp-validation-for="Class" class="text-danger" id="class"></span>
+        </div>
+
+        <div class="form-group col-md-4">
+            <label asp-for="StartDateYear" class="control-label">Ano de início</label>
+            <input type="date" asp-for="StartDateYear" class="form-control" id="Inicio" required/>
+            <span asp-validation-for="StartDateYear" class="text-danger" id="start"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Description" class="control-label">Descrição</label>
+            <textarea asp-for="Description" class="form-control" id="Descricao"></textarea>
+            <span asp-validation-for="Description" class="text-danger" id="descricao"></span>
+        </div>
+    </div>
+        <div class="form-row">
+            <div class="form-group col-md-6 ">
+                <a asp-action="Index" class="btn btn-dark">Voltar</a>
+            </div>
+            <div class="form-group col-md-6 d-md-flex justify-content-md-end">
+                <input type="submit" value="@ViewBag.Action" class="btn btn-success" id="btnCadastrar" />
+            </div>
+        </div>
+</form>
+
+
+
+

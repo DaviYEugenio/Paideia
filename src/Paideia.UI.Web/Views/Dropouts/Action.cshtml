@@ -1,0 +1,94 @@
+﻿@model Paideia.Application.DropoutsViewModel
+<h1>@ViewBag.Action Desistencia</h1>
+<form asp-action="Action" id="target">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label class="control-label">Candidato Desistente</label>
+            <br />
+        </div>
+    </div>
+    <div class="form-row ">
+        <div class="form-group col-md-4">
+            <label asp-for="Name" class="control-label">Nome do candidato</label>
+            <input asp-for="Name" class="form-control" required/>
+            <span asp-validation-for="Name" class="text-danger" id="Name"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="DateDropout" class="control-label">Data de desistência</label>
+            <input type="date" asp-for="DateDropout" class="form-control" required/>
+            <span asp-validation-for="DateDropout" class="text-danger" ></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="DateInscription" class="control-label">Data de inscrição</label>
+            <input type="date" asp-for="DateInscription" class="form-control" required/>
+            <span asp-validation-for="DateInscription" class="text-danger"></span>
+        </div>        
+    </div>
+    <div class="form-row ">
+        <div class="form-group col-md-3">
+            <label asp-for="Church" class="control-label">Igreja</label>
+            <input asp-for="Church" class="form-control" required/>
+            <span asp-validation-for="Church" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <label asp-for="IsFromIBPV" class="control-label">É da IBPV?</label>
+            <br />
+            <select class="form-control" asp-for="IsFromIBPV" required>
+                <option selected value="0">Selecione uma opção</option>
+                <option value=true>Sim</option>
+                <option value=false>Não</option>
+            </select>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="ShepherdOrMissionary" class="control-label">É pastor ou missionário?</label>
+            <br />
+            <select class="form-control" asp-for="ShepherdOrMissionary" required>
+                <option selected value="0">Selecione uma opção</option>
+                <option value="Nenhuma das Opções">Nenhuma das Opções</option>
+                <option value="Pastor">Pastor</option>
+                <option value="Missionário">Missionário</option>
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Email" class="control-label">Email</label>
+            <input type="email" asp-for="Email" class="form-control" required/>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>    
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label asp-for="Fone" class="control-label">Telefone</label>
+            <input type="number" asp-for="Fone" class="form-control" required>
+            <span asp-validation-for="Fone" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Cell" class="control-label">Celular</label>
+            <input type="number" asp-for="Cell" class="form-control" required>
+            <span asp-validation-for="Cell" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="FoneComercial" class="control-label">Telefone Comercial</label>
+            <input type="number" asp-for="FoneComercial" class="form-control" id="FoneComercial" required>
+            <span asp-validation-for="FoneComercial" class="text-danger" id="requisitos"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Reason" class="control-label">Descrição</label>
+            <textarea asp-for="Reason" class="form-control"></textarea>
+            <span asp-validation-for="Reason" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6 ">
+            <a asp-action="Index" class="btn btn-dark">Voltar</a>
+        </div>
+        <div class="form-group col-md-6 d-md-flex justify-content-md-end">
+            <input type="submit" value="@ViewBag.Action" class="btn btn-success" id="btnCadastrar" />
+        </div>
+    </div>
+</form>
+
+
+

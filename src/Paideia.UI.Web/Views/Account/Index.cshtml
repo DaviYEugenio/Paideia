@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Paideia.Application.AccountViewModel>
+<h1>Usuários</h1>
+<div class="alert alert-success alert-dismissible fade show" role="alert" id="alertDelete" style="display: none;">
+    <strong>O treinamento foi deletado com sucesso </strong>
+</div>
+<table class="table table-bordered border-primary">
+    <tbody>
+        <tr class="table">
+            <th>
+                Usuário
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Participação
+            </th>
+            <th>
+                Ação
+            </th>
+        </tr>
+    </tbody>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="table" id="tr-@item.Id">
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+                <td>
+                    <a asp-action="Action" asp-route-id="@item.Id" title="Edit" class="btn btn-warning">
+                        Editar
+                    </a>
+                    <a class="btn btn-danger remove" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="@item.Id">
+                        Deletar
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div id="exampleModal" class="modal fade"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Tem certeza que deseja deletar o usuário?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                <button type="button" class="btn btn-primary" id="btnRemove">Sim</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        var currentId = null
+        $(".remove").click(function () {
+            currentId = $(this).attr("data-id");
+        })
+        $("#btnRemove").click(function () {
+            removeElement(currentId);
+        })
+        function removeElement(id) {
+            if (currentId != null) {
+                var url = "/Account/Remove/" + id
+                $.ajax({
+                    url: url,
+                    type: "delete",
+                    success: function () {                        
+                        $('#tr-' + id + '').remove();                      
+                        $('#alertDelete').show();
+                        $('#exampleModal').modal("hide");
+                        setTimeout(function () {
+                            $('#alertDelete').hide();
+                        }, 8000);
+                    },
+                });
+            }
+        }      
+    });
+</script>

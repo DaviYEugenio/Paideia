@@ -1,0 +1,41 @@
+﻿  <div class="container">            
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Curso
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="training" asp-action="Index">Treinamento</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Model" asp-action="Index">Modulo</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Discipline" asp-action="Index">Disciplinas</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Class" asp-action="Index">Turma</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Diretoria
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Index">Professores</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Coordinator" asp-action="Index">Coordenadores</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Church" asp-action="Index">Igrejas</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Alunos
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Candidate" asp-action="Index">Candidatos</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Dropouts" asp-action="Index">Desistentes</a>
+                        </div>                        
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Index">Usuários</a>
+                    </li>                    
+                    @await Html.PartialAsync("_LoginPartial")
+                </ul>
+            </div>
+        </div>
+

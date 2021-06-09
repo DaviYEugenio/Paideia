@@ -1,0 +1,19 @@
+﻿@model Paideia.Application.LoginViewModel
+@{
+    ViewData["Title"] = "Recuperation";
+}
+<div id="Recuperation" style="display: none;">
+    <div class="login100-form validate-form">
+        <span class="login100-form-title p-b-45">
+            Digite seu email para a recuperação da senha
+        </span>
+        <div class="wrap-input100 validate-input m-b-20" data-validate="Username is required">
+            <input asp-for="Email" type="email" class="input100" placeholder="Email" id="recuperationEmail" />
+            <span asp-validation-for="Email" class="focus-input100"></span>
+            <div class="container-login100-form-btn">
+                <input type="button" class="login100-form-btn" value="Enviar" id="btnenviar" />
+            </div>
+        </div>
+    </div>
+</div>
+

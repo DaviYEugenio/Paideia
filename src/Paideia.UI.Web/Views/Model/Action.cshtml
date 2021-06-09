@@ -1,0 +1,51 @@
+﻿@model Paideia.Application.ModelViewModel
+<h1>@ViewBag.Action Modulos</h1>
+    <form asp-action="Action" id="target">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label class="control-label">Treinamento</label>
+                <br />
+                <select class="form-control" id="SelectTreinamento" asp-for="TrainingId" required>                    
+                    @foreach (var item in ViewBag.Treinamentos)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Module" class="control-label">Nome Modulo</label>
+                <input asp-for="Module" class="form-control" required/>
+                <span asp-validation-for="Module" class="text-danger" id="Modulo"></span>
+            </div>
+            
+                <div class="form-group col-md-4">
+                    <label asp-for="Workload" class="control-label">Carga Horária</label>
+                    <input asp-for="Workload" class="form-control" id="Carga" required/>
+                    <span asp-validation-for="Workload" class="text-danger" id="carga"></span>
+                </div>           
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Description" class="control-label">Descrição</label>
+                <textarea asp-for="Description" class="form-control" id="Descricao" ></textarea>
+                <span asp-validation-for="Description" class="text-danger" id="descricao"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Requirements" class="control-label">Pré Requisitos</label>
+                <textarea asp-for="Requirements" class="form-control" id="Requisitos"></textarea>
+                <span asp-validation-for="Requirements" class="text-danger" id="requisitos"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6 ">
+                <a asp-action="Index" class="btn btn-dark">Voltar</a>
+            </div>
+            <div class="form-group col-md-6 d-md-flex justify-content-md-end">
+                <input type="submit" value="@ViewBag.Action" class="btn btn-success" id="btnCadastrar" />
+            </div>
+        </div>
+    </form>
+
+
+
